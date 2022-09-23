@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials/fragments :: head('Home')">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<nav th:replace="partials/fragments :: navbar"></nav>
 <h1>Hello welcome to index</h1>
-<div id="recipes">
 
-</div>
-<script th:inline="javascript">
-    const KEY =  /*[[${KEY}]]*/ "test";
-    const HOST =  /*[[${HOST}]]*/ "test";
-</script>
-<script th:src="@{~/js/kcal-api.js}"></script>
+
 </body>
 </html>

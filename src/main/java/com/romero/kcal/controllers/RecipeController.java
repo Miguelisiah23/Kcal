@@ -6,14 +6,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController {
+public class RecipeController {
     @Value("${KEY}")
     public String KEY;
+
     @Value("${HOST}")
     public String HOST;
-    @GetMapping("/")
-    public String homepage(Model model){
 
-        return "index";
+    @GetMapping("/recipes")
+    public String recipes(Model model){
+        model.addAttribute("KEY",KEY);
+        model.addAttribute("HOST", HOST);
+        return "recipe";
     }
 }
