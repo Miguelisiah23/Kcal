@@ -1,0 +1,41 @@
+#macro-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.activity-lv{
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+}
+.goal{
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+
+}
+.user-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.calculate{
+margin: 1em;
+}
+
+@media screen and (min-width: 992px) {
+    .user-details{
+        flex-direction: row;
+    }
+    .activity-lv{
+        align-items: center;
+
+    }
+    .goal{
+        align-items: center;
+    }
+
+}

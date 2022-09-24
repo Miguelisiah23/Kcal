@@ -1,6 +1,24 @@
+body{
+    background: #A4DF56;
+}
+nav{
+    background: #FF9A1F;
+}
 #recipes{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
+}
+.recipe{
+    width: 60vw;
+    height: 60vh;
+}
+@media screen and (min-width: 992px){
+    .recipe{
+        width: 30vw;
+    }
+}
+.recipe>p{
+    margin: 0;
 }

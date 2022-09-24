@@ -19,7 +19,7 @@ fetch('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findB
             document.querySelector("#recipes").innerHTML +=
                 `<div class="recipe">
                     <h2>${rsp.title}</h2>
-                    <img src="${rsp.image}" alt="pic">
+                    <img class="shadow-lg" src="${rsp.image}" alt="pic">
                     <h5>* Per Serving</h5>
                     <p>Protein: ${rsp.protein}</p>
                     <p>Carbs: ${rsp.carbs}</p>
