@@ -9,14 +9,17 @@
 <div class="main">
     <h1>Macro Counter</h1>
     <div id="macro-form" class="form">
-        <form th:method="post" th:action="@{/calculator}">
+        <form >
             <div class="user-details">
                 <label for="age">Age</label>
                 <input type="number" id="age" name="age" th:value="${age}">
 
 
                 <label for="gender">Gender</label>
-                <input type="text" id="gender" name="gender" th:value="${gender}">
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
 
 
                 <label for="height">Height</label>
@@ -26,74 +29,37 @@
                 <label for="weight">Weight</label>
                 <input type="number" id="weight" name="weight" th:value="${weight}">
 
+                <label for="activity-lv">Activity Level</label>
+                <select name="activity-lv" id="activity-lv">
+                    <option value="1">No Exercise</option>
+                    <option value="2">Sedentary:Little to no exercise</option>
+                    <option value="3">Exercise 1-3 times/week</option>
+                    <option value="4">Exercise 4-5 times/week</option>
+                    <option value="5">Intense 3-4 times/week</option>
+                    <option value="6">Intense 6-7 times/week</option>
+                    <option value="7">Very intense: Everyday</option>
+                </select>
+                <label for="goal">Goal</label>
+                <select name="goal" id="goal">
+                    <option value="maintain">Maintain</option>
+                    <option value="mildlose">Weight loss</option>
+                    <option value="mildgain">Weight gain</option>
+
+                </select>
             </div>
 
-            <fieldset  class="activity-lv">
-                <legend class="text-center">Activity level</legend>
-                <div>
-                    <label for="1">No Exercise</label>
-                    <input type="radio" id="1" name="activity-lv" value="1" checked>
-                </div>
-                <div>
 
-                    <label for="2">Sedentary:Little to no exercise</label>
-                    <input type="radio" id="2" name="activity-lv" value="2">
-                </div>
-                <div>
-                    <label for="3">Exercise 1-3 times/week</label>
-                    <input type="radio" id="3" name="activity-lv" value="3">
-                </div>
-                <div>
-                    <label for="4">Exercise 4-5 times/week</label>
-                    <input type="radio" id="4" name="activity-lv" value="4">
-                </div>
-                <div>
 
-                    <label for="5">Intense 3-4 times/week</label>
-                    <input type="radio" id="5" name="activity-lv" value="5">
-                </div>
-                <div>
-                    <label for="6">Intense 6-7 times/week</label>
-                    <input type="radio" id="6" name="activity-lv" value="6">
-                </div>
-                <div>
-                    <label for="7">Very intense: Everyday</label>
-                    <input type="radio" id="7" name="activity-lv" value="7">
-                </div>
 
-            </fieldset>
-            <input id="activity-lv" type="hidden" th:value="${activityLv}">
-
-            <fieldset  class="goal">
-                <legend class="text-center">Goal</legend>
-                <div>
-                    <label for="maintain">Maintain</label>
-                    <input type="radio" id="maintain" name="goal" value="maintain">
-                </div>
-
-                <div>
-                    <label for="weight-loss">Weight loss</label>
-                    <input type="radio" id="weight-loss" name="goal" value="mildlose">
-                </div>
-
-                <div>
-                    <label for="weight-gain">Weight gain</label>
-                    <input type="radio" id="weight-gain" name="goal" value="mildgain">
-                </div>
-
-            </fieldset>
-            <input id="goal" type="hidden" th:value="${goal}">
-
-            <input name="_csrf" type="hidden" th:each="cookie: ${#httpServletRequest.cookies}"
-                   th:if="${cookie.name == 'Idea-4c161dd1'} " th:value="${cookie.value}">
-
-            <button id="calculate-btn" class="btn btn-dark text-center calculate" type="submit">Calculate</button>
         </form>
+        <button id="calculate-btn" class="btn btn-dark text-center calculate" type="submit">Calculate</button>
+    </div>
+    <div id="results">
+
     </div>
 </div>
 <script th:inline="javascript">
     const MACRO_HOST = /*[[${MACRO_HOST}]]*/ "test";
-    console.log(MACRO_HOST)
     const KEY = /*[[${KEY}]]*/ "test";
 
 </script>

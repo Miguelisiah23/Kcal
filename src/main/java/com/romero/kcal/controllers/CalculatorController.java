@@ -16,19 +16,20 @@ public class CalculatorController {
 
     @GetMapping("/calculator")
     public String macrCounter(Model model) {
+        model.addAttribute("KEY", KEY);
+        model.addAttribute("MACRO_HOST", MACRO_HOST);
         return "/calculator/calculator";
     }
 
-    @PostMapping("/calculator")
-    public String macroCounter(Model model, @RequestParam(name = "activity-lv") String activity, @RequestParam(name = "goal") String goal, @RequestParam(name = "age") String age, @RequestParam(name = "gender") String gender, @RequestParam(name = "height") String height, @RequestParam(name = "weight") String weight) {
-        model.addAttribute("age", age);
-        model.addAttribute("height", height);
-        model.addAttribute("weight", weight);
-        model.addAttribute("gender", gender);
-        model.addAttribute("activityLv", activity);
-        model.addAttribute("goal", goal);
-        model.addAttribute("KEY", KEY);
-        model.addAttribute("MACRO_HOST", MACRO_HOST);
-        return "calculator/calculator";
-    }
+//    @PostMapping("/calculator")
+//    public String macroCounter(Model model, @RequestParam(name = "activity-lv") String activity, @RequestParam(name = "goal") String goal, @RequestParam(name = "age") String age, @RequestParam(name = "gender") String gender, @RequestParam(name = "height") String height, @RequestParam(name = "weight") String weight) {
+//        model.addAttribute("age", age);
+//        model.addAttribute("height", height);
+//        model.addAttribute("weight", weight);
+//        model.addAttribute("gender", gender);
+//        model.addAttribute("activityLv", activity);
+//        model.addAttribute("goal", goal);
+
+//        return "calculator/calculator";
+//    }
 }

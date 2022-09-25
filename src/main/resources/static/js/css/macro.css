@@ -1,20 +1,39 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 #macro-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.activity-lv{
-    margin: 1em;
+#macros{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
-.goal{
-    margin: 1em;
-    display: flex;
-    flex-direction: column;
+.diet{
+    width: 30vw;
+    height: 25vh;
+    margin: .5em 1em;
+}
+.diet>p{
+    margin: 0;
+}
+/*.activity-lv{*/
+/*    margin: 1em;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
+/*.goal{*/
+/*    margin: 1em;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
 
-}
+/*}*/
 .user-details{
     display: flex;
     flex-direction: column;
@@ -26,16 +45,9 @@
 margin: 1em;
 }
 
-@media screen and (min-width: 992px) {
-    .user-details{
-        flex-direction: row;
-    }
-    .activity-lv{
-        align-items: center;
-
-    }
-    .goal{
-        align-items: center;
-    }
+@media screen and (min-width: 996px) {
+   .diet{
+       width: 20vw;
+   }
 
 }

@@ -34,7 +34,7 @@ fetch('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findB
             //
             //
             // )
-            i++
+            i++;
         }
     }).then()
     .catch(err => console.error(err));
