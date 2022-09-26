@@ -1,6 +1,7 @@
 package com.romero.kcal.models;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,17 +11,20 @@ import java.util.List;
 public class UserWithRole implements UserDetails {
     private long id;
     private String username;
+    private String email;
     private String password;
 
     public UserWithRole(AppUser user) {
         this.id = user.getId();
+        this.email = user.getEmail();
         this.username = user.getUsername();
         this.password = user.getPassword();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(""));
+         String roles = "";
+        return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
     }
 
     @Override

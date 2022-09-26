@@ -21,15 +21,20 @@ public class CalculatorController {
         return "/calculator/calculator";
     }
 
-//    @PostMapping("/calculator")
-//    public String macroCounter(Model model, @RequestParam(name = "activity-lv") String activity, @RequestParam(name = "goal") String goal, @RequestParam(name = "age") String age, @RequestParam(name = "gender") String gender, @RequestParam(name = "height") String height, @RequestParam(name = "weight") String weight) {
-//        model.addAttribute("age", age);
-//        model.addAttribute("height", height);
-//        model.addAttribute("weight", weight);
-//        model.addAttribute("gender", gender);
-//        model.addAttribute("activityLv", activity);
-//        model.addAttribute("goal", goal);
+    @GetMapping("/macros")
+    public String macros(){
+        return "calculator/macros";
+    }
 
-//        return "calculator/calculator";
-//    }
+    @PostMapping("/macros")
+    public String macroCounter(Model model, @RequestParam(name = "activity-lv") String activity, @RequestParam(name = "goal") String goal, @RequestParam(name = "age") String age, @RequestParam(name = "gender") String gender, @RequestParam(name = "height") String height, @RequestParam(name = "weight") String weight) {
+        model.addAttribute("age", age);
+        model.addAttribute("height", height);
+        model.addAttribute("weight", weight);
+        model.addAttribute("gender", gender);
+        model.addAttribute("activityLv", activity);
+        model.addAttribute("goal", goal);
+
+        return "calculator/calculator";
+    }
 }

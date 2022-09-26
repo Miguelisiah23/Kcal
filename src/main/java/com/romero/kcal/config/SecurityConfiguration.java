@@ -14,22 +14,26 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
+//        return NoOpPasswordEncoder.getInstance();
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeRequests()
-                .antMatchers("/kcal", "/")
+                .antMatchers("/calculator", "/")
                 .permitAll()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/hey")
+                .antMatchers("/recipes","/macros")
                 .authenticated()
                 .and()
                 .formLogin()
+                .defaultSuccessUrl("/")
+                .and()
+                .logout()
+                .logoutUrl("/logout")
                 .and()
                 .build();
 

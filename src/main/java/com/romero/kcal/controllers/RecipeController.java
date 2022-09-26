@@ -17,6 +17,6 @@ public class RecipeController {
     public String recipes(Model model){
         model.addAttribute("KEY",KEY);
         model.addAttribute("HOST", HOST);
-        return "recipe";
+        return "recipe/recipe";
     }
 }
