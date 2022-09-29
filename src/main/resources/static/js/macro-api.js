@@ -39,7 +39,7 @@ function getMacros() {
                 let lfCarbs = Math.floor(response.data.lowfat.carbs);
                 let lfFat = Math.floor(response.data.lowfat.fat);
 
-                document.querySelector("#results").innerHTML =
+                document.querySelector("#save-form").innerHTML =
                     `<div class="text-center">
                     <h1>Results</h1>
                     <h5>Daily Caloric intake: ${kcal}kcal</h5>
@@ -47,11 +47,20 @@ function getMacros() {
                     <h3 class="text-center">Diets To Choose From</h3>
                     <div id="macros">
                     <div class="diet">
+                    
                      <h4>Balanced diet</h4>
+                     <input type="hidden" id="diet" name="diet" value="balanced diet">
+                     <input type="hidden" id="kcal" name="kcal" value="${kcal}">
                      <h6>*Daily intake</h6>
-                     <p>Protein: ${bProtein}g</p>      
+                     <p>Protein: ${bProtein}g</p>  
+                     <input type="hidden" id="bProtein" name="protein" value="${bProtein}">    
                      <p>Carbs: ${bCarbs}g</p>      
-                     <p>Fat: ${bFat}g</p>      
+                     <input type="hidden" id="bcarbs" name="carbs" value="${bCarbs}">
+                     <p>Fat: ${bFat}g</p>  
+                     <input type="hidden" id="bFat" name="fat" value="${bFat}">
+                    
+                     <button class="btn btn-dark" type="submit">Save</button>
+                        
                    </div>
                    <div class="diet">
                     <h4>High Protein</h4>

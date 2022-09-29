@@ -40,4 +40,11 @@ public class MacroNutrients {
         this.carbs = carbs;
         this.fat = fat;
     }
+    public MacroNutrients(String diet,int calories, int protein, int carbs, int fat) {
+        this.diet = diet;
+        this.calories = calories;
+        this.protein = protein;
+        this.carbs = carbs;
+        this.fat = fat;
+    }
 }

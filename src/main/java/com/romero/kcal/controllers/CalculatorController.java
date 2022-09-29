@@ -1,6 +1,13 @@
 package com.romero.kcal.controllers;
 
+import com.romero.kcal.models.AppUser;
+import com.romero.kcal.models.MacroNutrients;
+import com.romero.kcal.models.UserWithRole;
+import com.romero.kcal.repositories.MacroRepository;
+import com.romero.kcal.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CalculatorController {
+    @Autowired
+    private MacroRepository macrosDao;
+    @Autowired
+    private UserRepository usersDao;
     @Value("${KEY}")
     public String KEY;
     @Value("${MACRO_HOST}")
@@ -27,14 +38,16 @@ public class CalculatorController {
     }
 
     @PostMapping("/macros")
-    public String macroCounter(Model model, @RequestParam(name = "activity-lv") String activity, @RequestParam(name = "goal") String goal, @RequestParam(name = "age") String age, @RequestParam(name = "gender") String gender, @RequestParam(name = "height") String height, @RequestParam(name = "weight") String weight) {
-        model.addAttribute("age", age);
-        model.addAttribute("height", height);
-        model.addAttribute("weight", weight);
-        model.addAttribute("gender", gender);
-        model.addAttribute("activityLv", activity);
-        model.addAttribute("goal", goal);
+    public String macroCounter() {
+        UserWithRole loggedin = (UserWithRole) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        MacroNutrients macros = new MacroNutrients(diet,protein,carbs,fat,kcal);
+        AppUser user = usersDao.findByUsername(loggedin.getUsername());
+        System.out.println("hello?");
+//        macros.setUser(user);
+//        macrosDao.save(macros);
 
-        return "calculator/calculator";
+
+
+        return "redirect:/macros";
     }
 }
