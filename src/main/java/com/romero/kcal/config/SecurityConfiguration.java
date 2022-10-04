@@ -22,11 +22,11 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeRequests()
-                .antMatchers("/calculator", "/")
+                .antMatchers("/calculator", "/", "/macros")
                 .permitAll()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/recipes","/macros")
+                .antMatchers("/recipes")
                 .authenticated()
                 .and()
                 .formLogin()

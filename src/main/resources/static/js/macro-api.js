@@ -39,27 +39,32 @@ function getMacros() {
                 let lfCarbs = Math.floor(response.data.lowfat.carbs);
                 let lfFat = Math.floor(response.data.lowfat.fat);
 
-                document.querySelector("#save-form").innerHTML =
+                document.querySelector("#results").innerHTML =
                     `<div class="text-center">
                     <h1>Results</h1>
                     <h5>Daily Caloric intake: ${kcal}kcal</h5>
                     </div>
                     <h3 class="text-center">Diets To Choose From</h3>
                     <div id="macros">
+                    
                     <div class="diet">
+                    <form th:action="@{/macros}" th:method="post" th:object='${macros}'>
                     
                      <h4>Balanced diet</h4>
-                     <input type="hidden" id="diet" name="diet" value="balanced diet">
-                     <input type="hidden" id="kcal" name="kcal" value="${kcal}">
-                     <h6>*Daily intake</h6>
+                     <input type="hidden" th:value="balanced" th:field="*{diet}">
+                     
+                    <h6>*Daily intake</h6>
+                     <input type="hidden" th:value="${goal}" th:field="*{goal}">
+                     <input type="hidden" th:value="${kcal}" th:field="*{calories}">
                      <p>Protein: ${bProtein}g</p>  
-                     <input type="hidden" id="bProtein" name="protein" value="${bProtein}">    
+                     <input type="hidden" th:value="${bProtein}" th:field="*{protein}"> 
                      <p>Carbs: ${bCarbs}g</p>      
-                     <input type="hidden" id="bcarbs" name="carbs" value="${bCarbs}">
+                     <input type="hidden" th:value="${bCarbs}" th:field="*{carbs}">
                      <p>Fat: ${bFat}g</p>  
-                     <input type="hidden" id="bFat" name="fat" value="${bFat}">
+                     <input type="hidden" th:value="${bFat}" th:field="*{fat}">
                     
-                     <button class="btn btn-dark" type="submit">Save</button>
+                     <button class="btn btn-dark" type="submit" id="bd">Save</button>
+                     </form>
                         
                    </div>
                    <div class="diet">
@@ -91,4 +96,5 @@ function getMacros() {
 }
 
 
-document.querySelector("#calculate-btn").addEventListener("click", getMacros)
+document.querySelector("#calculate-btn").addEventListener("click", getMacros);
+
