@@ -48,47 +48,73 @@ function getMacros() {
                     <div id="macros">
                     
                     <div class="diet">
-                    <form th:action="@{/macros}" th:method="post" th:object='${macros}'>
-                    
-                     <h4>Balanced diet</h4>
-                     <input type="hidden" th:value="balanced" th:field="*{diet}">
-                     
-                    <h6>*Daily intake</h6>
-                     <input type="hidden" th:value="${goal}" th:field="*{goal}">
-                     <input type="hidden" th:value="${kcal}" th:field="*{calories}">
-                     <p>Protein: ${bProtein}g</p>  
-                     <input type="hidden" th:value="${bProtein}" th:field="*{protein}"> 
-                     <p>Carbs: ${bCarbs}g</p>      
-                     <input type="hidden" th:value="${bCarbs}" th:field="*{carbs}">
-                     <p>Fat: ${bFat}g</p>  
-                     <input type="hidden" th:value="${bFat}" th:field="*{fat}">
-                    
-                     <button class="btn btn-dark" type="submit" id="bd">Save</button>
-                     </form>
-                        
-                   </div>
-                   <div class="diet">
-                    <h4>High Protein</h4>
-                    <h6>*Daily intake</h6>
-                    <p>Protein: ${hProtein}g</p>      
-                    <p>Carbs: ${hCarbs}g</p>      
-                    <p>Fat: ${hFat}g</p>      
-                   </div>
-                   <div class="diet">
-                     <h4>Low Carb</h4>
+                     <h4 class="diet-name">Balanced diet</h4>
                      <h6>*Daily intake</h6>
-                     <p>Protein: ${lcProtein}g</p>      
-                     <p>Carbs: ${lcCarbs}g</p>      
-                     <p>Fat: ${lcFat}g</p>      
+                     <p>Protein: <span class="protein">${bProtein}</span>g</p> 
+                     <p>Carbs: <span class="carbs">${bCarbs}</span>g</p>      
+                     <p>Fat: <span class="fat"> ${bFat}</span>g</p>  
+                     <button class="btn btn-dark save" type="button">Save</button>
+                   </div>
+                   
+                   <div class="diet">
+                    <h4 class="diet-name">High Protein</h4>
+                    <h6>*Daily intake</h6>
+                    <p>Protein: <span class="protein">${hProtein}</span>g</p>      
+                    <p>Carbs: <span class="carbs">${hCarbs}</span>g</p>      
+                    <p>Fat: <span class="fat"> ${hFat}</span>g</p>      
+                    <button class="btn btn-dark save" type="button">Save</button>
+                   </div>
+                   
+                   <div class="diet">
+                     <h4 class="diet-name">Low Carb</h4>
+                     <h6>*Daily intake</h6>
+                     <p>Protein: <span class="protein">${lcProtein}g</span</p>      
+                     <p>Carbs: <span class="carbs">${lcCarbs}</span>g</p>      
+                     <p>Fat: <span class="fat"> ${lcFat}</span>g</p>   
+                     <button class="btn btn-dark save" type="button">Save</button>   
                    </div>
                    <div class="diet">
-                     <h4>Low Fat</h4>
+                     <h4 class="diet-name">Low Fat</h4>
                      <h6>*Daily intake</h6>
-                     <p>Protein: ${lfProtein}g</p>      
-                     <p>Carbs: ${lfCarbs}g</p>      
-                     <p>Fat: ${lfFat}g</p>      
+                     <p>Protein: <span class="protein">${lfProtein}</span>g</p>      
+                     <p>Carbs: <span class="carbs">${lfCarbs}</span>g</p>      
+                     <p>Fat: <span class="fat"> ${lfFat}</span>g</p>  
+                     <button class="btn btn-dark save" type="button">Save</button>    
                    </div>
                    </div>`
+
+            let saveButtons = document.querySelectorAll(".save");
+            let proteins = document.querySelectorAll(".protein");
+            let carbs = document.querySelectorAll(".carbs");
+            let fats = document.querySelectorAll(".fat");
+            let diets = document.querySelectorAll(".diet-name");
+
+            let i = 0;
+            for(let save of saveButtons){
+                console.log(i);
+                save.addEventListener("click",()=>{
+
+                    console.log(proteins[0].innerHTML);
+                    // console.log(carbs[i].innerHTML);
+                    // console.log(fats[i].innerHTML);
+                    // console.log(diets[i].innerHTML);
+                    console.log(kcal);
+                    console.log(goal);
+
+             //        document.querySelector("#save-form").innerHTML +=
+             //            `<input type="hidden" th:value="${proteins[i]}">
+             // <input type="hidden" th:value="${carbs[i]}">
+             // <input type="hidden" th:vaue="${fats[i]}">
+             // <input type="hidden" th:value="${kcal}">
+             // <input type="hidden" th:value="${goal}">
+             // <input type="hidden" th:value="${diets[i]}">`
+
+
+                })
+                i++;
+
+
+            }
 
             }
         )
@@ -97,4 +123,6 @@ function getMacros() {
 
 
 document.querySelector("#calculate-btn").addEventListener("click", getMacros);
+
+
 

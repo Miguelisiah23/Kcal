@@ -56,11 +56,11 @@
         <button id="calculate-btn" class="btn btn-dark text-center calculate" type="button">Calculate</button>
     </div>
     <div id="results">
-<!--        <form id="save-form" th:method="post" th:action="@{/macros}">-->
+        <form id="save-form" th:method="post" th:action="@{/macros}" th:object="${macros}">
 
-<!--            <input name="_csrf" type="hidden" th:each="cookie: ${#httpServletRequest.cookies}"-->
-<!--                   th:if="${cookie.name == 'Idea-4c161dd1'} " th:value="${cookie.value}">-->
-<!--        </form>-->
+            <input name="_csrf" type="hidden" th:each="cookie: ${#httpServletRequest.cookies}"
+                   th:if="${cookie.name == 'Idea-4c161dd1'} " th:value="${cookie.value}">
+        </form>
     </div>
 </div>
 <script th:inline="javascript">

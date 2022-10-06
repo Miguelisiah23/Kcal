@@ -35,7 +35,7 @@ public class CalculatorController {
     }
 
     @GetMapping("/macros")
-    public String macros(){
+    public String macros(Model model){
 
         return "calculator/macros";
     }
