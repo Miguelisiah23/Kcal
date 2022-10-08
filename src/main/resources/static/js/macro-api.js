@@ -95,19 +95,19 @@ function getMacros() {
                 save.addEventListener("click",()=>{
 
                     console.log(proteins[0].innerHTML);
-                    // console.log(carbs[i].innerHTML);
-                    // console.log(fats[i].innerHTML);
-                    // console.log(diets[i].innerHTML);
+                    console.log(carbs[i].innerHTML);
+                    console.log(fats[i].innerHTML);
+                    console.log(diets[i].innerHTML);
                     console.log(kcal);
                     console.log(goal);
 
-             //        document.querySelector("#save-form").innerHTML +=
-             //            `<input type="hidden" th:value="${proteins[i]}">
-             // <input type="hidden" th:value="${carbs[i]}">
-             // <input type="hidden" th:vaue="${fats[i]}">
-             // <input type="hidden" th:value="${kcal}">
-             // <input type="hidden" th:value="${goal}">
-             // <input type="hidden" th:value="${diets[i]}">`
+                    document.querySelector("#save-form").innerHTML +=
+                        `<input type="hidden" th:value="${proteins[i]}">
+             <input type="hidden" th:value="${carbs[i]}">
+             <input type="hidden" th:vaue="${fats[i]}">
+             <input type="hidden" th:value="${kcal}">
+             <input type="hidden" th:value="${goal}">
+             <input type="hidden" th:value="${diets[i]}">`
 
 
                 })
