@@ -32,13 +32,17 @@ public class CalculatorController {
     }
 
     @GetMapping("/macros")
-    public String macros(){
+    public String macros(Model model){
+        UserWithRole loggedin = (UserWithRole) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        AppUser user = usersDao.findByUsername(loggedin.getUsername());
+        model.addAttribute("macros", user.getMacros());
+
 
         return "calculator/macros";
     }
 
     @PostMapping("/macros")
-    public String macros(String protein, String carbs, String fat, String diet, String goal, int calories) {
+    public String macros(String protein, String carbs, String fat, String diet, String goal, int calories, String age, String weight, String height) {
         UserWithRole loggedin = (UserWithRole) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         AppUser user = usersDao.findByUsername(loggedin.getUsername());
         MacroNutrients macros = new MacroNutrients();
@@ -48,12 +52,19 @@ public class CalculatorController {
         macros.setDiet(diet);
         macros.setCalories(calories);
         macros.setGoal(goal);
+        user.setAge(Integer.parseInt(age));
+        user.setWeight(Integer.parseInt(weight));
+        user.setHeight(Integer.parseInt(height));
+        usersDao.save(user);
+        macros.setUser(user);
         System.out.println(macros.getProtein());
         System.out.println(macros.getCarbs());
         System.out.println(macros.getFat());
         System.out.println(macros.getCalories());
         System.out.println(macros.getDiet());
         System.out.println(macros.getGoal());
+        macrosDao.save(macros);
+        System.out.println("Macros usccess!");
 
 
         return "redirect:/macros";

@@ -12,9 +12,13 @@ function getMacros() {
     console.log(age);
     let gender = document.querySelector("#gender").value + '';
     console.log(gender)
-    let height = document.querySelector("#height").value + '';
-    console.log(height)
-    let weight = document.querySelector("#weight").value + '';
+    let height = document.querySelector("#height").value;
+    console.log(height);
+
+    // console.log(height);
+
+    let weight = document.querySelector("#weight").value;
+    weight /= 2.205;
     console.log(weight)
     let activityLv = document.querySelector("#activity-lv").value + '';
     console.log(activityLv)
@@ -83,42 +87,45 @@ function getMacros() {
                    </div>
                    </div>`
 
-            let saveButtons = document.querySelectorAll(".save");
+                let saveButtons = document.querySelectorAll(".save");
 
 
-            let i = 0;
-            for(let save of saveButtons){
-                console.log(i);
-                let proteins = document.querySelectorAll(".protein").item(i);
-                let carbs = document.querySelectorAll(".carbs").item(i);
-                let fats = document.querySelectorAll(".fat").item(i);
-                let diets = document.querySelectorAll(".diet-name").item(i);
-                save.addEventListener("click",()=>{
+                let i = 0;
+                for (let save of saveButtons) {
+                    console.log(i);
+                    let proteins = document.querySelectorAll(".protein").item(i);
+                    let carbs = document.querySelectorAll(".carbs").item(i);
+                    let fats = document.querySelectorAll(".fat").item(i);
+                    let diets = document.querySelectorAll(".diet-name").item(i);
+                    save.addEventListener("click", () => {
 
-                    console.log(proteins.innerHTML);
-                    console.log(carbs.innerHTML);
-                    console.log(fats.innerHTML);
-                    console.log(diets.innerHTML);
-                    console.log(kcal);
-                    console.log(goal);
+                        console.log(proteins.innerHTML);
+                        console.log(carbs.innerHTML);
+                        console.log(fats.innerHTML);
+                        console.log(diets.innerHTML);
+                        console.log(kcal);
+                        console.log(goal);
 
-                    document.querySelector("#save-form").innerHTML +=
-                        `<input type="hidden" name="diet" value="${diets.innerHTML}">
+                        document.querySelector("#save-form").innerHTML +=
+                            `<input type="hidden" name="diet" value="${diets.innerHTML}">
                         <input type="hidden"  name="goal" value="${goal}">
                         <input type="hidden"  name="calories" value="${kcal}">
                         <input type="hidden"  name="protein" value="${proteins.innerHTML}">
                         <input type="hidden"  name="carbs" value="${carbs.innerHTML}">
-                        <input type="hidden"  name="fat" value="${fats.innerHTML}">`;
+                        <input type="hidden"  name="fat" value="${fats.innerHTML}">
+                        <input type="hidden"  name="age" value="${age}">
+                        <input type="hidden"  name="weight" value="${weight}">
+                        <input type="hidden"  name="height" value="${height}">
+`;
 
-                    document.querySelector("#save-form").submit();
+                        document.querySelector("#save-form").submit();
 
 
+                    })
+                    i++;
 
-                })
-                i++;
 
-
-            }
+                }
 
             }
         )
