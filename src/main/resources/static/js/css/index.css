@@ -1,0 +1,12 @@
+.index-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.index-head-img{
+height: 100vh;
+    width: 100vw;
+
+}
